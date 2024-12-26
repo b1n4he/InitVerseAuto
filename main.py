@@ -24,7 +24,7 @@ def install_node():
     c1 = "wget https://github.com/Project-InitVerse/miner/releases/download/v1.0.0/iniminer-linux-x64"
     c2 = "chmod a+x iniminer-linux-x64"
     # 这里默认使用全部cpu，如果需要指定cpu数量，可以修改下面的命令，增加--cpu-devices
-    c3 = f'pm2 start iniminer-linux-x64 --pool stratum+tcp://{wallet}.{name}@pool-core-testnet.inichain.com:32672 --name="initverse"'
+    c3 = f'pm2 start iniminer-linux-x64 --name="initverse" -- --pool stratum+tcp://{wallet}.{name}@pool-core-testnet.inichain.com:32672'
     os.system(c1)
     os.system(c2)
     os.system(c3)
@@ -48,6 +48,7 @@ def main():
     print("2. 安装节点")
     print("3. 查看节点日志")
     print("4. 停止节点")
+    print("5. 退出脚本")
 
     choice = input("请输入选项数字：")
 
@@ -59,14 +60,21 @@ def main():
         view_node_logs()
     elif choice == "4":
         stop_node()
+    elif choice == "5":
+        exit(0)
     else:
         print("无效的选择。")
+
+
+
 
 
 if __name__ == "__main__":
     while True:
         try:
             main()
+        except SystemExit:
+            break
         except:
+            # 捕获其他所有异常，并打印错误消息
             print("[x] 出现错误，无法继续运行")
-            continue
