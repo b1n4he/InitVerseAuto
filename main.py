@@ -3,7 +3,7 @@ import os
 # 安装pm2
 def install_environment():
     c1 = "wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash"
-    c2 = '''
+    c2 = r'''
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
@@ -42,7 +42,7 @@ def stop_node():
 
 
 def main():
-    print("欢迎使用节点管理脚本！")
+    print("欢迎使用InitVerse节点管理脚本！由推特@oxbaboon编写")
     print("请选择操作：")
     print("1. 安装环境")
     print("2. 安装节点")
